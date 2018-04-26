@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS-->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Option Price Calculation</title>
+  </head>
+  <body class="sidebar-mini fixed">
+    <div class="wrapper">
+      <!-- Navbar-->
+      <header class="main-header hidden-print"><a class="logo" href="index.html">Option Pricer</a>
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
+          <!-- Navbar Right Menu-->
+          <div class="navbar-custom-menu">
+            <ul class="top-nav">
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Side-Nav-->
+      <aside class="main-sidebar hidden-print">
+        <section class="sidebar">
+          <div class="user-panel">
+            <div class="pull-left image"><img class="img-circle" src="static/images/7.jpg" alt="User Image"></div>
+            <div class="pull-left info">
+              <p>Goup 7</p>
+            </div>
+          </div>
+          <!-- Sidebar Menu-->
+          <ul class="sidebar-menu">
+            <li class="active"><a href="{{url_for('index')}}"><i class="fa fa-dashboard"></i><span>Team Member</span></a></li>
+            <li><a href="{{url_for('European_Option')}}"><i class="fa fa-laptop"></i><span>European Option</span></a></li>
+            <li><a href="{{url_for('Implied_Volatility')}}"><i class="fa fa-pie-chart"></i><span>Implied Volatility</span></a></li>
+            <li><a href="{{url_for('Geometric_Asian_Option')}}"><i class="fa fa-edit"></i><span>Geometric Asian Option</span></a></li>
+            <li><a href="{{url_for('Geometric_Basket_Option_nAssets')}}"><i class="fa fa-th-list"></i><span>Geometric Basket Option</span></a></li>
+            <li><a href="{{url_for('Arithmetic_Asian_Option')}}"><i class="fa fa-file-text"></i><span>Arithmetic Asian Option</span></a></li>
+            <li><a href="{{url_for('Arithmetic_Basket_Option')}}"><i class="fa fa-share"></i><span>Arithmetic Basket Option</span></a></li>
+            <li><a href="{{url_for('American_Binominal_Tree')}}"><i class="fa fa-pie-chart"></i><span>American Binominal Tree</span></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </aside>
+      <div class="content-wrapper">
+        <div class="page-title">
+          <div>
+            <h1><i class="fa fa-dashboard"></i> Team Member</h1>
+          </div>
+          <div>
+            <ul class="breadcrumb">
+              <li><i class="fa fa-home fa-lg"></i></li>
+              <li><a href="#">Team Member</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card">
+              <h3 class="card-title">Chen Lifan</h3>
+              <p>3035419171</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card">
+              <h3 class="card-title">Zhang Sijing</h3>
+              <p>3035419456</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Javascripts-->
+    <script src="static/js/jquery-2.1.4.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/plugins/pace.min.js"></script>
+    <script src="static/js/main.js"></script>
+  </body>
+</html>

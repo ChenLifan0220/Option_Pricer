@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS-->
+    <link rel="stylesheet" type="text/css" href="static/css/main.css">
+    <!-- Font-icon css-->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Arithmetic Basket Options</title>
+    <script src='http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js'></script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries-->
+    <!--if lt IE 9
+    script(src='https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js')
+    script(src='https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js')
+    -->
+    <style type="text/css">
+    table{margin:10; border-collapse:collapse; margin:10 auto;}
+    td,th{ width:10%; font-size:14px; padding:10px 0; text-align:center;border:1px solid #ddd; }
+    th {background-color:#f4f4f4;} 
+    /* input */
+    td.input{ position:relative; }
+    td input{ width:100%; border:1px solid #CF5C74; background:#F90; border-radius:4px; display:block; position:absolute; text-align:center; font-size:14px; left:0; top:0; padding:11px 0; margin:-1px 0 0 -1px; }
+    td.hover{background:#eee;}
+</style>
+  </head>
+  <body class="sidebar-mini fixed">
+    <div class="wrapper">
+      <!-- Navbar-->
+      <header class="main-header hidden-print"><a class="logo" href="index.html">Option Pricer</a>
+        <nav class="navbar navbar-static-top">
+          <!-- Sidebar toggle button--><a class="sidebar-toggle" href="#" data-toggle="offcanvas"></a>
+          <!-- Navbar Right Menu-->
+          <div class="navbar-custom-menu">
+            <ul class="top-nav"> 
+            </ul>
+          </div>
+        </nav>
+      </header>
+      <!-- Side-Nav-->
+      <aside class="main-sidebar hidden-print">
+          <section class="sidebar">
+          <div class="user-panel">
+            <div class="pull-left image"><img class="img-circle" src="static/images/7.jpg" alt="User Image"></div>
+            <div class="pull-left info">
+              <p>Goup 7</p>
+            </div>
+          </div>
+          <!-- Sidebar Menu-->
+          <ul class="sidebar-menu">
+            <li class="active"><a href="index.html"><i class="fa fa-dashboard"></i><span>Team Member</span></a></li>
+            <li><a href="{{url_for('European_Option')}}"><i class="fa fa-laptop"></i><span>European Option</span></a></li>
+            <li><a href="{{url_for('Implied_Volatility')}}"><i class="fa fa-pie-chart"></i><span>Implied Volatiliry</span></a></li>
+            <li><a href="{{url_for('Geometric_Asian_Option')}}"><i class="fa fa-edit"></i><span>Geometric Asian Option</span></a></li>
+            <li><a href="{{url_for('Geometric_Basket_Option_nAssets')}}"><i class="fa fa-th-list"></i><span>Geometric Basket Option</span></a></li>
+            <li><a href="{{url_for('Arithmetic_Asian_Option')}}"><i class="fa fa-file-text"></i><span>Arithmetic Asian Option</span></a></li>
+            <li><a href="{{url_for('Arithmetic_Basket_Option')}}"><i class="fa fa-share"></i><span>Arithmetic Basket Option</span></a></li>
+            <li><a href="{{url_for('American_Binominal_Tree')}}"><i class="fa fa-pie-chart"></i><span>American Binominal Tree</span></a></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </section>
+      </aside>
+      <div class="content-wrapper">
+        <div class="page-title">
+          <div>
+            <h1><i class="fa fa-edit"></i>Arithmetic Basket Options</h1>
+          </div>
+          <div>
+            <ul class="breadcrumb">
+              <li><i class="fa fa-home fa-lg"></i></li>
+              <li>Forms</li>
+              <li><a href="#">Arithmetic Basket Options</a></li>
+            </ul>
+          </div>
+        </div>
+          <div class="col-md-12">
+            <div class="card">
+              <div class="row">
+                <div class="col-lg-6">
+                  <div class="well bs-component">
+        <form name="basket" action="/Arithmetic_Basket_Options" method="POST" class="form-horizontal">
+                      <fieldset>
+					  <div class="form-group">
+                          <div class="col-lg-offset-2">
+							<a href="#" rel="external nofollow" rel="external nofollow" rel="external nofollow" id="AddMoreFileBox"><input type='button' class="btn btn-primary" value='Add Assets'></a>
+                          </div>
+                        </div>
+					  
+					<div id="InputsWrapper" >
+					  <div>&emsp;Asset <input type="text" name="Spotprice1" id="field1_1"/>Volatility <input type="text" name="Volatility1" id="field2_1"/>&emsp;<a href="#" rel="external nofollow" rel="external nofollow" rel="external nofollow" class="removeclass"><input type='button' value='delete'></a></div>
+						 </div>
+           <br>
+					 <div class="form-group">
+                        <label class="col-lg-2 control-label" >Asset Number</label>
+                         <div class="col-lg-10">
+                           <input class="form-control"  type="text" name="addnumber" value="1" readonly=true id="count">
+                         </div>
+                      </div>
+					<div class="form-group">
+                          <div class="col-lg-offset-2">
+							<input type="button" class="btn btn-primary" value="Finish input assets" onclick="autoTable()">&emsp;<input type="button" class="btn btn-default" value="Reset table" onclick="clearTable()">
+                          
+                    
+					<div id="autotable" name="tableData"></div>
+					<a href="#" rel="external nofollow" rel="external nofollow" rel="external nofollow" id="gettable"><br>
+         <input type="button" class="btn btn-primary" value="Finish input rau"></a><br>
+        </div>
+        </div>
+						<div class="form-group">
+                          <label class="col-lg-2 control-label" >StrikePrice</label>
+                          <div class="col-lg-10">
+                            <input class="form-control"  type="text" placeholder="StrikePrice" name="K">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" >MarketRate</label>
+                          <div class="col-lg-10">
+                            <input class="form-control" type="text" placeholder="Risk-free Rate" name="r">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label" >StartTime</label>
+                          <div class="col-lg-10">
+                            <input class="form-control" type="text" placeholder="Start Time" name="t">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label">Maturity</label>
+                          <div class="col-lg-10">
+                            <input class="form-control" type="text" placeholder="Maturity" name="T">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label class="col-lg-2 control-label">Option Type:</label>
+                          <div class="col-lg-10">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="CallPutFlag" value="C" checked="">Call Option
+                              </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="CallPutFlag" value="P">Put Option
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+						<div class="form-group">
+                          <label class="col-lg-2 control-label">Control variate method</label>
+                          <div class="col-lg-10">
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="Control_Variate_Method" value="0">Standard MC
+                              </label>
+                            </div>
+                            <div class="radio">
+                              <label>
+                                <input type="radio" name="Control_Variate_Method" value="1">Control Variate
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                        <input type="hidden" name="g" value = "1" readonly="true" id="g" ><br>
+                        <div class="form-group">
+                          <div class=" col-lg-offset-2">
+                            <button class="btn btn-default" type="reset">Cancel</button>
+                            <button class="btn btn-primary" type="submit">Submit</button>
+                          </div>
+                        </div>
+                      </fieldset>
+      <script id="addpair" type="text/javascript" method='POST'>
+        $(document).ready(function() {
+            var InputsWrapper = $("#InputsWrapper"); //Input boxes wrapper ID
+            var AddButton = $("#AddMoreFileBox"); //Add button ID
+            x = InputsWrapper.length; //initlal text box count
+            var FieldCount=1; //to keep track of text box added
+    
+        $(AddButton).click(function (e) //on add input button click
+        {
+            x++; //text box added increment
+            //add input box
+            $(InputsWrapper).append('<div>&emsp;Asset <input type="text" name="Spotprice'+ x +'" id="field1_'+ x +'"/>Volatility <input type="text" name="Volatility'+ x +'" id="field2_'+ x +'"/>&emsp;<a href="#" rel="external nofollow" rel="external nofollow" rel="external nofollow" class="removeclass"><input type="button" value="delete"></a></div>');
+            //text box increment
+                var oForm=document.forms["basket"];
+                oForm.elements["addnumber"].value=x;
+        });
+        $("body").on("click",".removeclass", function(e){ //user click on remove text
+            if( x > 1 ) {
+                $(this).parent('div').hide();
+                x--; //decrement textbox
+                var oForm=document.forms["basket"];
+                oForm.elements["addnumber"].value=x;
+            }
+        return false;
+        })
+        });
+       function autoTable(){
+        var table=document.createElement('table');
+        var cols = x+1;
+        var rows = x+1;
+        table.setAttribute('height','150'+"px")
+        table.setAttribute('cellspacing',0+"px")
+        table.setAttribute('id',"tb")
+        console.log('ddd')
+        for(var i=0;i<rows;i++){
+            var tr=document.createElement('tr');
+            for(var j=0;j<cols;j++){
+                td=document.createElement('td');
+                td.setAttribute('id',i+'-'+j);
+                tr.appendChild(td);
+                if(j!=0)
+                {
+                    if(i==0){
+                    td.innerText='rau'+j;
+                    }
+                    else{
+                        if(i<j){
+                            td.setAttribute('contenteditable',true);
+                        }
+                        else if(i>j){
+                            td.innerText='--';
+                        }
+                        else if(i==j){
+                            td.innerText=1;
+                        }
+                    }
+                }
+                else{
+                    if(i!=0)
+                    {
+                        td.innerText='rau'+i;
+                    }
+                }
+            }
+            table.appendChild(tr);
+        }
+        document.getElementById('autotable').appendChild(table);
+        }
+
+        //clear table function
+        function clearTable(){
+            document.getElementById('tb').remove()
+        }
+
+        $(document).ready(function() {
+            var gettable = $("#gettable"); //Add button ID
+    
+        $(gettable).click(function (e) //on add input button click
+        {
+            var tabledata=new Array();
+            for(i=1;i<x+1;i++){
+                tabledata[i]=new Array();
+                for(j=1;j<x+1;j++){
+                    if(i<j){
+                        tabledata[i][j]=$(tb).find('tr').eq(i).find('td').eq(j).text();
+                    }
+                    else if(i==j){
+                        tabledata[i][j]=1;
+                    }
+                    else{
+                        tabledata[i][j]=0;
+                    }
+                }
+           }
+           for(i=1;i<x+1;i++){
+                for(j=1;j<x+1;j++){
+                    if(i>j){
+                        tabledata[i][j]=tabledata[j][i];
+                    }
+                }
+           }
+            //var aa=$(tb).find('tr').eq(i).find('td').eq(j).text();
+            var orm=document.forms["basket"];
+            orm.elements["g"].value=tabledata;
+
+/*            $.post("/GeometricBasketOptionnAssets",{"mycars":mycars}).done(function(data){
+                console.log(response)
+          }).fail(function(){
+                console.log(error)
+          }) */
+
+        })
+        })
+
+       /*  $(document).ready(function() {
+            //var submitbutton = $("#submitform"); //Input boxes wrapper ID
+            $('body').on("click",".submitform",function(e) //on add input button click
+        {
+            var dat= {
+                dat: JSON.stringify({
+                    'username':1,
+                    'password':2
+                })
+            };
+           $.ajax({
+               type:'POST',
+               url:"/GeometricBasketOptionnAssets",
+               //data:{JSON.stringify(rs)},
+               data:dat,
+               dataType:"json",
+               //traditional:true,
+               success: function (data) {//ajax请求成功后触发的方法
+               console.log(response)
+            }, 
+            error: function (error) {//ajax请求失败后触发的方法
+                console.log(error//弹出错误信息
+
+           )}
+        })
+        })
+        })*/
+
+    </script>
+					</form>
+                  </div>
+                </div>
+                <div class="col-lg-4 col-lg-offset-1">
+                  <form class="bs-component">
+                    <div class="form-group">
+                      <label class="control-label" for="result">Result</label>
+                      <p>Calculation: {{result}}</p ><br>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Javascripts-->
+    <script src="static/js/jquery-2.1.4.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/plugins/pace.min.js"></script>
+    <script src="static/js/main.js"></script>
+  </body>
+</html>
